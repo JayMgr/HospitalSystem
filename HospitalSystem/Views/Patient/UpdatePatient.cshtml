@@ -1,0 +1,38 @@
+﻿@model HospitalSystem.View_Models.UpdatePatientViewModel;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Add New Student";
+}
+<h2 class="my-4">Update Patient</h2>
+
+@using (Html.BeginForm("UpdatePatient", "Patient", FormMethod.Post, new { @class = "needs-validation", enctype = "multipart/form-data", novalidate = "novalidate" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.PatientId)
+
+    <div class="form-group mb-3 w-25">
+        @Html.LabelFor(model => model.Name, new { @class = "form-label" })
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Name" })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.LabelFor(model => model.Address, new { @class = "form-label" })
+        @Html.EditorFor(model => model.Address, new { @class = "form-control", placeholder = "Address" })
+    </div>
+    <div class="form-group mb-3">
+        @Html.LabelFor(model => model.Number, new { @class = "form-label" })
+        @Html.EditorFor(model => model.Number, new { @class = "form-control", placeholder = "PhoneNumber" })
+    </div>
+
+   
+    <div class="form-group mb-3">
+        @Html.LabelFor(model => model.Description, new { @class = "form-label" })
+        @Html.EditorFor(model => model.Description, new { @class = "form-control", placeholder = "PhoneNumber" })
+    </div>
+    <div class="form-group mb-3">
+        @Html.LabelFor(model => model.Gender, new { @class = "form-label" })
+        @Html.EditorFor(model => model.Gender, new { @class = "form-control", placeholder = "PhoneNumber" })
+    </div>
+    <button type="submit" class="btn btn-primary">Update Student</button>
+}
